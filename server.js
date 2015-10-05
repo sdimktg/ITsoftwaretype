@@ -117,21 +117,20 @@ app.post('/update', function(req, res) {
 POST-/create: Receive the form from the client side and create a new record in the database/salesforce
 **********************************************************************************************************/
 app.post('/create', function(req, res) {
+    
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         
         if (err) console.log(err);
         
-       // var update = 'SELECT sfid FROM salesforce.IT_software_Type__c WHERE Name = $2';
+        var update = 'UPDATE salesforce.IT_Software_Type__c SET number_of_licenses_purchased__c = $1, date_purchased__c = $3, subscription__c =$4  WHERE LOWER(Name) = LOWER($2)';
         
-         var update = 'UPDATE salesforce.IT_Software_Type__c SET number__c = $1, date__c = $3, subscription__c =$4  WHERE LOWER(Name) = LOWER($2)';
-        
-        conn.query(update,[req.body.number__c, req.body.name, req.body.date__c, req.body.subscription__c],function(err, result) {
+        conn.query(update,[req.body.number_of_licenses_purchased__c, req.body.name, req.body.date_purchased__c, req.body.subscription__c],function(err, result) {
                 
         if (err != null || result.rowCount == 0) {
                     
-            var insert = 'INSERT INTO salesforce.IT_Software_Type__c (number__c, Name , date__c, subscription__c) VALUES ($1, $2, $3, $4)';
+            var insert = 'INSERT INTO salesforce.IT_Software_Type__c (number_of_licenses_purchased__c, Name , date_purchased__c, subscription__c) VALUES ($1, $2, $3, $4)';
                     
-            conn.query(insert,[req.body.number__c, req.body.name, req.body.date__c, req.body.subscription__c],
+            conn.query(insert,[req.body.number_of_licenses_purchased__c, req.body.name, req.body.date_purchased__c, req.body.subscription__c],
     
                   function(err, result) {
                         
