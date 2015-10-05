@@ -13,6 +13,25 @@
 }
 
 
+#effect:hover {
+
+background: black;
+font-size: 16px;
+font-weight: bold;
+    
+
+}
+
+
+#nav_color {
+
+    background: #FFD100;
+    border-color: #FFD100;
+
+
+}
+
+
 #p_h3{
 
     font-weight: bold;
@@ -26,9 +45,9 @@
 }
 
 
-#updateSoftware{
+.form{
     
-    padding-top: 3em;
+    padding-top: 4em;
 
 }
 

@@ -15,8 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     
     <script>
-  
-        
+
         $(function() {
    
             $.ajax({ // ajax call starts
@@ -85,21 +84,34 @@
                 }
             });       
 });
-    
-             
+            
     </script> 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+    
+<nav id="nav_color" class="navbar navbar-inverse">
+    
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        
-      </a>
-       <p id="text_nav" class="navbar-text">IT Software Type</p> 
-        
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> SDI IT Software Type</a>
     </div>
-  </div>
+   
+    
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a id="effect" href="index.html">Update </a></li>
+        <li><a id="effect" href="new.html">New Software</a></li>
+    </ul>
+    
+    </div>
+         </div>
 </nav>
     
     
@@ -108,7 +120,7 @@
     
     <div class="container-fluid col-xs-8">
     
-          <form id="updateSoftware" action="/update" method="POST" >
+          <form class="form" id="updateSoftware" action="/update" method="POST" >
             <div class="panel panel-primary">
                 <div  id="myPanel"  class="panel-heading">
                     <h3 id = "p_h3" class="panel-title">Edit  IT Software Type &nbsp;<i class="fa fa-desktop  fa-lg"></i></h3>
