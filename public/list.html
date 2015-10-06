@@ -32,11 +32,10 @@
                     
                     var r = $("<tr/>");
                     $("#data").append(r);
-                    r.append($("<td>" +row.name + "</td>"));
-                    r.append($("<td>" +row.date_purchased__c + "</td>"));
-                    r.append($("<td>" +row.number_of_licenses_purchased__c + "</td>"));
-                    r.append($("<td>" +row.subscription__c + "</td>"));
-                          
+                    r.append($("<td class="style">" +row.name + "</td>"));
+                    r.append($("<td class="style">" +row.date_purchased__c + "</td>"));
+                    r.append($("<td class="style">" +row.number_of_licenses_purchased__c + "</td>"));
+                    r.append($("<td class="style">" +row.subscription__c + "</td>"));     
           });
                   
             }
@@ -73,27 +72,24 @@
          </div>
 </nav>
     
-    
-    
     <div class="container-fluid col-xs-2"></div>
-    
-    
+
     <div class="container-fluid col-xs-8">
         
         <div class="table-responsive form ">
-  <table id="data" class="table table-hover">
-     <thead>
-            
-             <tr>
-                <th>IT Software</th>
-                <th>Date of purchased</th>
-                <th># of Licenses</th>
-                <th>Subscription</th>   
-            </tr>
+            <table id="data" class="table table-hover">
+                
+            <thead>
+                <tr>
+                    <th class="style">IT Software</th>
+                    <th class="style">Date of purchased</th>
+                    <th class="style"># of Licenses</th>
+                    <th class="style">Subscription</th>   
+                </tr>
             </thead>
 
-  </table>
-</div>    
+            </table>
+        </div>    
         
 
     </div>
