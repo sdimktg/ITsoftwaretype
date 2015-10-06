@@ -31,7 +31,10 @@
                 data.rows.forEach(function(row){
             
                     $('#data').append('<td>' + row.name +'</td');    
-                    $('#data').append('<td>' + row.date_purchased__c +'</td');     
+                    $('#data').append('<td>' + row.date_purchased__c +'</td');
+                    $('#data').append('<td>' + row.number_of_licenses_purchased__c +'</td'); 
+                    $('#data').append('<td>' + row.subscription__c +'</td'); 
+                   
           });
                   
             }
