@@ -159,19 +159,23 @@ app.post('/create', function(req, res) {
 });
 
 
-/****************************************************************************************************************
-POST-/new: Create a new contact record in the database/salesforce (Testing functionality)
-*****************************************************************************************************************/
-app.post('/new', function(req, res) {
+/***********************************************************************************************************
+POST-/updateSoftware: Receive the form from the client side and update the record in the database/salesforce
+************************************************************************************************************/
+app.post('/delete', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         
-        var insert = 'INSERT INTO salesforce.Contact(LastName) VALUES($1)';
-            conn.query(insert,[req.body.LastName],
-            function(err, result) {
+        if (err) console.log(err);
+        
+            var d = 'DELETE salesforce.IT_Software_Type__c   WHERE sfid = $3';
+        
+        
+        conn.query(d,[req.body.sfid],
+       function(err, result) {
                 done();
                 if (err != null || result.rowCount == 0) {
                      console.error(err);
-                    res.status(400).json({error: 'Error inserting'});
+                    res.status(400).json({error: err});
                 }
                 else {
                     res.json(result);
@@ -179,9 +183,33 @@ app.post('/new', function(req, res) {
             }
             
         );
+        
+
+     /*
+          var insert = 'INSERT INTO salesforce.IT_Software_Log__c (IT_Software_Type__c, number_of_licenses_purchased__c) VALUES ($1,$2)';
+                    
+            conn.query(insert,[req.body.IT_Software_Type__c,req.body.number_of_licenses_purchased__c],function(err, result) {
+                done();
+                if (err != null || result.rowCount == 0) {
+                    console.error(err);
+                    res.status(400).json({error: err});
+                }
+                else {
+                    res.json(result);
+                }
+            }
+            
+        );   
+        
+        
+        */
             
     });
 });
+
+
+
+
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
