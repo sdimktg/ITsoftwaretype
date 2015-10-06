@@ -29,19 +29,8 @@
 
                 var info = data.rows;
                 data.rows.forEach(function(row){
-                    
-                    var tr;
-                    
-                    tr = $('</tr>');
-                    tr.append("<td>" + row.name + "</td>");
-                    tr.append("<td>" + row.date_purchased__c + "</td>");
-                    tr.append("<td>" + row.subscription__c + "</td>");
-                    tr.append("<td>" + row.number_of_licenses_purchased__c + "</td>");
-                    
-                    
-                    
-                    
-                //$('#info').append('<td>' + row.name +'</td');     
+            
+                    $('#data').append('<td>' + row.name +'</td');     
           });
                   
             }
@@ -96,6 +85,12 @@
                 <th>Subscription</th>   
             </tr>
             </thead>
+            
+            <tr id="data">
+            
+            
+            
+            </tr>
 
   
 </table>
