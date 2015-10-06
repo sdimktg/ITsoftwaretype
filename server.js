@@ -64,7 +64,6 @@ app.get('/softwareName',function(req,res) {
         });
 });
 
-
 /***********************************************************************************************************
 POST-/updateSoftware: Receive the form from the client side and update the record in the database/salesforce
 ************************************************************************************************************/
@@ -87,13 +86,7 @@ app.post('/update', function(req, res) {
             }
             
         );
-        
-        //IT_Software_Type__c__ExternalId__c
-        //IT_Software_Type__r__ExternalId__c
-        //IT_Software_Type__c
-        
-        
-        
+   
           var insert = 'INSERT INTO salesforce.IT_Software_Log__c (IT_Software_Type__c, number_of_licenses_purchased__c) VALUES ($1,$2)';
                     
             conn.query(insert,[req.body.IT_Software_Type__c,req.body.number_of_licenses_purchased__c],function(err, result) {
@@ -182,33 +175,10 @@ app.post('/delete', function(req, res) {
             }
             
         );
-        
 
-     /*
-          var insert = 'INSERT INTO salesforce.IT_Software_Log__c (IT_Software_Type__c, number_of_licenses_purchased__c) VALUES ($1,$2)';
-                    
-            conn.query(insert,[req.body.IT_Software_Type__c,req.body.number_of_licenses_purchased__c],function(err, result) {
-                done();
-                if (err != null || result.rowCount == 0) {
-                    console.error(err);
-                    res.status(400).json({error: err});
-                }
-                else {
-                    res.json(result);
-                }
-            }
-            
-        );   
-        
-        
-        */
             
     });
 });
-
-
-
-
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

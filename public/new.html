@@ -88,12 +88,12 @@
           <li><a id="effect" href="index.html">Update </a></li>
           <li><a id="effect" href="delete.html">Delete </a></li>
           <li><a id="effect" href="list.html">IT Software Type </a></li>
-    </ul>
+      </ul>
     
+        </div>
     </div>
-         </div>
-</nav>
-    
+
+    </nav>
     
     
     <div class="container-fluid col-xs-2"></div>
@@ -101,7 +101,8 @@
     
     <div class="container-fluid col-xs-8">
         
-        <form class="form" id="newSoftwareLicense" action="/create" method="POST" >
+        <div class="row">
+          <form class="form" id="newSoftwareLicense" action="/create" method="POST" >
             <div class="panel panel-primary">
                 <div id="myPanel"  class="panel-heading">
                     <h3 id = "p_h3" class="panel-title">Create a new IT Software Type &nbsp;<i class="fa fa-plus  fa-lg"></i></h3>
@@ -114,9 +115,9 @@
                     </div>
                     
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">Purchased Date</label>
+                    <label for="date" >Date</label>
                         <div class="input-group input-append date" id="datePicker">
-                            <input id="date_purchased__c" type="text" class="form-control" name="date_purchased__c" />
+                            <input id="date_purchased__c" type="text"  placeholder="Purchased Date" class="form-control" name="date_purchased__c" />
                             <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                 </div>
@@ -149,6 +150,8 @@
                 </div>
             </div>
         </form>
+            
+            </div>
 
     </div>
 </body>
