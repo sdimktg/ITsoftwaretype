@@ -31,6 +31,14 @@
                 data.rows.forEach(function(row){
                     
                     
+                    var r = $("<tr/>");
+                    $("#data").append(r);
+                    r.append($("<td>" +row.name + "</td>"));
+                    r.append($("<td>" +row.date_purchased__c + "</td>"));
+                    r.append($("<td>" +row.number_of_licenses_purchased__c + "</td>"));
+                    r.append($("<td>" +row.subscription__c + "</td>"));
+                    
+                    /*
                      $('#data').append('<tr>'); 
             
                     $('#data').append('<td>' + row.name +'</td');    
@@ -38,7 +46,7 @@
                     $('#data').append('<td>' + row.number_of_licenses_purchased__c +'</td'); 
                     $('#data').append('<td>' + row.subscription__c +'</td'); 
                     
-                    $('#data').append('</tr>');
+                    $('#data').append('</tr>'); */
                    
           });
                   
@@ -83,7 +91,7 @@
     
     <div class="container-fluid col-xs-8">
         
-        <table class="table table-hover">
+        <table id="data" class="table table-hover">
             
             <thead>
             
