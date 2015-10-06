@@ -167,10 +167,9 @@ app.post('/delete', function(req, res) {
         
         if (err) console.log(err);
         
-            var d = 'DELETE FROM salesforce.IT_Software_Type__c   WHERE sfid = $3';
-        
-        
-        conn.query(d,[req.body.sfid],
+            var d = 'DELETE FROM salesforce.IT_Software_Type__c   WHERE sfid = $1';
+                    conn.query(d,[req.body.sfid],
+                               
        function(err, result) {
                 done();
                 if (err != null || result.rowCount == 0) {
