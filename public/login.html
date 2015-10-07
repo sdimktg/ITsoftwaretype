@@ -37,6 +37,8 @@
                     errorMessage.text("This fields are required.");
                     error.show();
                 }
+                
+                
                 else {
                     $.ajax({
                         url: event.target.action,
@@ -50,18 +52,59 @@
                         success: function(result) {
                             
                             window.location.href = "new.html";
-                        }
-                            
                         },
                         error: function(err) {
                             errorMessage.text(err.responseJSON.error);
                             error.show();
                         }
-                    })
-                }
-            });       
+                    
+                
+                })
+                
+            }
+            });
+                               
+         });   
+            
+                    
+        $(function() {
+        
+             $.ajax({ // ajax call starts
+            url: '/listing', 
+            type:"GET",
+            dataType: 'json', // Choosing a JSON datatype
+            contentType: "application/json; charset=utf-8",
+           
+            success: function(data) {
+
+                var info = data.rows;
+                data.rows.forEach(function(row){
+                    
+                    var r = $("<tr/>");
+                    $("#data").append(r);
+                    r.append($("<td id='name' class= 'style'>" +row.name + "</td>"));
+                    r.append($("<td class='style'>" +row.date_purchased__c + "</td>"));
+                    r.append($("<td class='style'>" +row.number_of_licenses_purchased__c + "</td>"));
+                    r.append($("<td class='style'>" +row.subscription__c + "</td>"));     
+          });
+                  
+            }
+        });
 });
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+  
     </script> 
 </head>
 <body>
