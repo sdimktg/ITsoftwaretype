@@ -184,7 +184,7 @@ app.post('/delete', function(req, res) {
 /***********************************************************************************************************
 POST-/updateSoftware: Receive the form from the client side and update the record in the database/salesforce
 ************************************************************************************************************/
-app.get('/login ', function(req, res) {
+app.post('/login ', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         
         if (err) console.log(err);
@@ -205,11 +205,6 @@ app.get('/login ', function(req, res) {
         );   
     });
 });
-
-
-
-
-
 
 
 app.listen(app.get('port'), function () {
