@@ -180,6 +180,38 @@ app.post('/delete', function(req, res) {
     });
 });
 
+
+/***********************************************************************************************************
+POST-/updateSoftware: Receive the form from the client side and update the record in the database/salesforce
+************************************************************************************************************/
+app.post('/login ', function(req, res) {
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        
+        if (err) console.log(err);
+        
+     var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass_c = $1 AND email__c = $2 ';
+        conn.query(login,
+       function(err, result) {
+                done();
+                if (err != null || result.rowCount == 0) {
+                     console.error(err);
+                    res.status(400).json({error: err});
+                }
+                else {
+                    res.json(result);
+                }
+            }
+            
+        );   
+    });
+});
+
+
+
+
+
+
+
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
