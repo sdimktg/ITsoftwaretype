@@ -198,7 +198,7 @@ app.post('/login ', function(req, res) {
                     res.status(400).json({error: err});
                 }
                 else {
-                    res.json(result);
+                    res.send(result);
                 }
             }
             
