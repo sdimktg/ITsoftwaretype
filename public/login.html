@@ -51,8 +51,7 @@
                        
                         success: function(result) {
                             
-                            window.location.href = "new.html";
-                        },
+                           alert('I passed');
                         error: function(err) {
                             errorMessage.text(err.responseJSON.error);
                             error.show();
