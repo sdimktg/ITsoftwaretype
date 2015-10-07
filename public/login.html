@@ -52,6 +52,7 @@
                         success: function(result) {
                             
                            alert('I passed');
+                        },
                         error: function(err) {
                             errorMessage.text(err.responseJSON.error);
                             error.show();
