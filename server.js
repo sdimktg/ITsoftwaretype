@@ -184,7 +184,7 @@ app.post('/delete', function(req, res) {
 /***********************************************************************************************************
 POST-/updateSoftware: Receive the form from the client side and update the record in the database/salesforce
 ************************************************************************************************************/
-app.post('/login ', function(req, res) {
+app.get('/login ', function(req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         
         if (err) console.log(err);
