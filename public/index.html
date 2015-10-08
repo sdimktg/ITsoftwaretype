@@ -52,19 +52,9 @@
                          contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
-                            
-                            data.rows.forEach(function(row){
-                                
-                                var   sfid = row.sfid;
-                                var   name = row.name;  
-                                
-                                location.href = "/new.html?sfid= + sfid&name= name ";
-                                
-                            });
-                            
-                       
-                           
-                            
+
+                                location.href = "/launchpad.html";
+
                         },
                         error: function(err) {
                             errorMessage.text("Please Check yours Credentials");

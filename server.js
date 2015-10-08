@@ -1,21 +1,107 @@
 var express = require('express'),
     http = require('http'),
     path = require('path'),
+   
     bodyParser = require('body-parser'),
     app = express();
 
-
+var session  = require('express-session');
 var pg = require('pg');
 
-app.use(bodyParser.json());
+
 app.use(express.static(__dirname + '/public'));
+app.engine('html', require('ejs').renderFile);
 
 app.get('/appid', function(req, res) {
     res.send({appId: appId});
 });
 
 
+
 app.set('port', process.env.PORT || 5000);
+
+
+/***********************************************************************************************
+TEST SESSION VARIABLE
+************************************************************************************************/
+app.use(session({secret: 'ssshhhhh'}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+var sess;
+
+    app.get('/',function(req,res){
+        
+        sess=req.session;
+            //Session set when user Request our app via URL
+    if(sess.sfid)
+    {
+        res.redirect('/launchpad');
+    }
+        
+    else{
+            res.render('index.html');
+        }
+});
+
+/***********************************************************************************************
+Check the user credentials in salesforce
+************************************************************************************************/
+app.post('/check', function(req, res) {
+    
+    sess=req.session;
+    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+        
+        if (err) console.log(err);
+        
+     var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass__c = $1 AND email__c = $2 ';
+        conn.query(login,[req.body.login_pass__c,req.body.email__c],
+       function(err, result){
+                done();
+                if (err != null || result.rowCount == 0) {
+                     console.error(err);
+                    res.status(400).json({error: err});
+                }
+                else {
+                    sess.sfid= req.body.sfid;
+                    res.end('done');
+                }
+                   
+        });   
+    });
+});
+
+
+
+app.get('/launchpad',function(req,res){
+sess=req.session;
+if(sess.sfid)
+{
+res.write('<h1>Hello '+sess.sfid+'</h1>');
+res.end('<a href="+">Logout</a>');
+}
+else
+{
+res.write('<h1>Please login first.</h1>');
+res.end('<a href="+">Login</a>');
+}
+
+});
+
+app.get('/logout',function(req,res){
+
+req.session.destroy(function(err){
+if(err){
+console.log(err);
+}
+else
+{
+res.redirect('/');
+}
+});
+
+});
+
 
 /***********************************************************************************************
 GET-/Listing: Find the fields from the custom object and display it in the form (index.html)
@@ -181,29 +267,6 @@ app.post('/delete', function(req, res) {
 });
 
 
-/***********************************************************************************************************
-POST-/updateSoftware: Receive the form from the client side and update the record in the database/salesforce
-************************************************************************************************************/
-app.post('/check', function(req, res) {
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
-        
-        if (err) console.log(err);
-        
-     var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass__c = $1 AND email__c = $2 ';
-        conn.query(login,[req.body.login_pass__c,req.body.email__c],
-       function(err, result){
-                done();
-                if (err != null || result.rowCount == 0) {
-                     console.error(err);
-                    res.status(400).json({error: err});
-                }
-                else {
-                    res.json(result);
-                }
-                   
-        });   
-    });
-});
 
 
 app.listen(app.get('port'), function () {
