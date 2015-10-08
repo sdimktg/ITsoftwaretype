@@ -56,7 +56,8 @@
                             location.href = "/new.html?info=" + data;
                         },
                         error: function(err) {
-                            alert('Something wrong');
+                            errorMessage.text(err.responseJSON.error);
+                            error.show();
                         }
                 })
                 
@@ -92,6 +93,11 @@
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
+              <div id="error" class="alert alert-danger" role="alert" style="display: none;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span id="errorMessage"></span>
+                    </div>
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		  </div>	
       </div>
