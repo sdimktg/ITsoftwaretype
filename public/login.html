@@ -19,7 +19,7 @@
 
         $(function() {
 
-            $("#login").submit(function(event) {
+            $("#check").submit(function(event) {
                 event.preventDefault();
 
                 var errorMessage = $("#errorMessage");
@@ -78,7 +78,7 @@
           <h1 class="text-center"> SDI Login</h1>
       </div>
       <div class="modal-body">
-          <form id="login" method="POST" action="/login" class="form col-md-12 center-block">
+          <form id="check" method="POST" action="/check" class="form col-md-12 center-block">
             <div class="form-group">
               <input id="email__c" type="text" class="form-control input-lg" placeholder="Email">
             </div>
