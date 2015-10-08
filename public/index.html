@@ -58,14 +58,13 @@
                                 var   sfid = row.sfid;
                                 var   name = row.name;  
                                 
-                                 alert(sfid);
-                            alert(name);
+                                location.href = "/new.html?sfid=" + sfid;
                                 
                             });
                             
                        
                            
-                            //location.href = "/new.html?info=" + data;
+                            
                         },
                         error: function(err) {
                             errorMessage.text("Please Check yours Credentials");
