@@ -189,7 +189,7 @@ app.post('/login ', function(req, res) {
         
         if (err) console.log(err);
         
-     var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass_c = $1 AND email__c = $2 ';
+     var login  = 'SELECT sfid, Name FROM  salesforce.CDN_Reps__c  WHERE login_pass__c = $1 AND email__c = $2 ';
         conn.query(login,
        function(err, result) {
           
