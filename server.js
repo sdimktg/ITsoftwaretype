@@ -200,7 +200,6 @@ app.post('/login ', function(req, res) {
                 else {
                     res.json(result);
                 }
-            }
                    
         });   
     });
