@@ -53,10 +53,18 @@
                         dataType: "json",
                         success: function(data) {
                             
-                          var   sfid = data.rows[0];
-                          var   name = data.rows[1];
-                            alert(sfid);
+                            data.rows.forEach(function(row){
+                                
+                                var   sfid = row.sfid;
+                                var   name = row.name;  
+                                
+                                 alert(sfid);
                             alert(name);
+                                
+                            });
+                            
+                       
+                           
                             //location.href = "/new.html?info=" + data;
                         },
                         error: function(err) {
