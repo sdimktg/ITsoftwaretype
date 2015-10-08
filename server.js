@@ -192,15 +192,14 @@ app.post('/login ', function(req, res) {
      var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass_c = $1 AND email__c = $2 ';
         conn.query(login,
        function(err, result) {
-                done();
-                if (err != null || result.rowCount == 0) {
-                     console.error(err);
-                    res.status(400).json({error: err});
-                }
-                else {
-                    res.json(result);
-                }
-            }
+          
+           if (err) {
+               
+                res.send('Error in Query');
+        
+           }
+            res.json(result);
+            
             
         );   
     });
