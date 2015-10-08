@@ -33,7 +33,7 @@
                 var login_pass_c = $("#login_pass_c").val();
                
                 
-                if (login_pass_c.length == 0 || login_pass_c.length == 0 ) {
+                if (email__c.length == 0 || login_pass_c.length == 0 ) {
                     errorMessage.text("This fields are required.");
                     error.show();
                 }
@@ -54,7 +54,7 @@
                            alert('I passed');
                         },
                         error: function(err) {
-                            alert(result);
+                            alert('Something wrong');
                         }
                     
                 
