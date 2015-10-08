@@ -64,7 +64,7 @@ app.post('/check', function(req, res) {
                 }
                 else {
                     sess.sfid= req.body.sfid;
-                    res.end('done');
+                    res.json(result);
                 }
                    
         });   
