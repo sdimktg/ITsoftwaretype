@@ -54,8 +54,8 @@ app.post('/check', function(req, res) {
         
         if (err) console.log(err);
         
-     var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass__c = $1 AND email__c = $2 AND program_status__c = Active ';
-        conn.query(login,[req.body.login_pass__c,req.body.email__c,req.body.program_status__c],
+     var login  = 'SELECT sfid, name FROM  salesforce.CDN_Reps__c  WHERE login_pass__c = $1 AND email__c = $2 ';
+        conn.query(login,[req.body.login_pass__c,req.body.email__c],
        function(err, result){
                 done();
                 if (err != null || result.rowCount == 0) {
