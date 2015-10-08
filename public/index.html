@@ -52,7 +52,11 @@
                          contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
-                            alert(data.rows);
+                            
+                          var   sfid = data.rows[0];
+                          var   name = data.rows[1];
+                            alert(sfid);
+                            alert(name);
                             //location.href = "/new.html?info=" + data;
                         },
                         error: function(err) {
